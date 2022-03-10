@@ -1,0 +1,32 @@
+{
+  "name": "vitepress-plugin-mermaid",
+  "version": "0.0.1",
+  "description": "Add mermaid support for Vitepress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emersonbottero/vitepress-plugin-mermaid.git"
+  },
+  "keywords": [
+    "vitepress",
+    "mermaid"
+  ],
+  "author": "Emerson Bottero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emersonbottero/vitepress-plugin-mermaid/issues"
+  },
+  "files": [
+    "Mermaid.vue",
+    "mermaid.min.js"
+  ],
+  "homepage": "https://github.com/emersonbottero/vitepress-plugin-mermaid#readme",
+  "peerDependencies": {
+    "mermaid": "^8.14.0",
+    "vitepress": "^0.21.6",
+    "vpress-mdi-details": "^1.1.9"
+  }
+}
