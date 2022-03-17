@@ -1,11 +1,10 @@
 <template>
   <div>
-    mermaid graph
     <div v-html="svg"></div>
   </div>
 </template>
 <script>
-import { onMounted, ref, computed, h } from "vue";
+import { onMounted, ref } from "vue";
 export default {
   name: "Mermaid",
   props: {
@@ -19,13 +18,10 @@ export default {
     },
   },
   setup(props, context) {
-    const code = `<div class="language-mermaid"><pre><code>${props.graph}</code></pre></div>`;
-    const show = ref(false);
     const svg = ref(undefined);
-    const rendered = computed(() => svg.value !== undefined);
     onMounted(() => {
       import("./mermaid.min.js")
-        .then(() => {
+        .then((mermaid) => {
           mermaid.mermaidAPI.initialize({ startOnLoad: false });
           console.log("... mermaid rendering");
           mermaid.mermaidAPI.render(
@@ -54,10 +50,7 @@ export default {
         });
     });
     return {
-      code,
       svg,
-      rendered,
-      show,
     };
   },
 };
