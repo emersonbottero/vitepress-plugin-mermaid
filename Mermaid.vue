@@ -1,64 +1,50 @@
 <template>
-  <div>
-    <div v-html="svg"></div>
-  </div>
+  <div v-html="svg"></div>
 </template>
-<script>
-import { onMounted, ref } from "vue";
-export default {
-  name: "Mermaid",
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    graph: {
-      type: String,
-      required: true,
-    },
+
+<script setup>
+import { onMounted, ref, watch } from "vue";
+import Mermaid from "mermaid";
+import hash from "hash-sum";
+
+const props = defineProps({
+  graph: {
+    type: String,
+    required: true,
   },
-  setup(props, context) {
-    const svg = ref(undefined);
-    onMounted(() => {
-      import("./mermaid.min.js")
-        .then((mermaid) => {
-          mermaid.mermaidAPI.initialize({ startOnLoad: false });
-          console.log("... mermaid rendering");
-          mermaid.mermaidAPI.render(
-            props.id,
-            props.graph,
-            (svg_rendered, ...args) => {
-              svg.value = svg_rendered.replace(
-                /xmlns="http:\/\/www.w3.org\/2000\/svg" height="100%" /,
-                `xmlns="http://www.w3.org/2000/svg" `
-              );
-            }
-          );
-        })
-        .catch((error) => {
-          console.log("... local import failed, try existing");
-          window.mermaid.mermaidAPI.render(
-            props.id,
-            props.graph,
-            (svg_rendered, ...args) => {
-              svg.value = svg_rendered.replace(
-                /xmlns="http:\/\/www.w3.org\/2000\/svg" height="100%" /,
-                `xmlns="http://www.w3.org/2000/svg" `
-              );
-            }
-          );
-        });
-    });
-    return {
-      svg,
-    };
-  },
+});
+
+const onBodyClassChange = (mutationsList, observer) => {
+  mutationsList.forEach((mutation) => {
+    if (mutation.attributeName === "class") {
+      renderChart();
+    }
+  });
+};
+
+const mutationObserver = new MutationObserver(onBodyClassChange);
+
+mutationObserver.observe(document.body, { attributes: true });
+
+const svg = ref(undefined);
+onMounted(() => renderChart());
+
+const renderChart = () => {
+  let hasDarkClass = false;
+  document.body.classList.forEach((i) => {
+    if (i.toLowerCase().includes("dark")) hasDarkClass = true;
+  });
+  Mermaid.mermaidAPI.initialize({
+    theme: hasDarkClass ? "dark" : "",
+    startOnLoad: false,
+  });
+  // console.log("... mermaid rendering", hasDarkClass);
+  Mermaid.mermaidAPI.render(
+    hash(props.graph),
+    props.graph,
+    (svg_rendered, ...args) => {
+      svg.value = svg_rendered;
+    }
+  );
 };
 </script>
-
-<style>
-.mermaid {
-  cursor: pointer;
-  padding: 5px;
-}
-</style>

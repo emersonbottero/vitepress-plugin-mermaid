@@ -1,6 +1,7 @@
 # vitepress-plugin-mermaid
 
-Add mermaid support for Vitepress
+Add mermaid support for Vitepress.
+It detects any dark theme that are set in body as long as it has dark in the name
 
 ## Install
 
