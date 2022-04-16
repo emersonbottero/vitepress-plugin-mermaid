@@ -5,7 +5,7 @@
 <script setup>
 import { onMounted, ref, watch } from "vue";
 import Mermaid from "mermaid";
-import hash from "hash-sum";
+import hash from "./hash-sum";
 
 const props = defineProps({
   graph: {

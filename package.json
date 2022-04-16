@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-mermaid",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Add mermaid support for Vitepress",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,8 @@
   },
   "files": [
     "Mermaid.vue",
-    "mermaid.min.js"
+    "mermaid.min.js",
+    "hash-sum.js"
   ],
   "homepage": "https://github.com/emersonbottero/vitepress-plugin-mermaid#readme",
   "peerDependencies": {
