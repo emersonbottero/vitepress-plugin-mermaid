@@ -12,6 +12,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  id: {
+    type: String,
+    required: true,
+  }
 });
 
 const onBodyClassChange = (mutationsList, observer) => {
@@ -40,7 +44,7 @@ const renderChart = () => {
   });
   // console.log("... mermaid rendering", hasDarkClass);
   Mermaid.mermaidAPI.render(
-    hash(props.graph),
+    props.id,
     props.graph,
     (svg_rendered, ...args) => {
       svg.value = svg_rendered;
