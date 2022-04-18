@@ -4,7 +4,7 @@
 
 <script setup>
 import { onMounted, ref, watch } from "vue";
-import Mermaid from "mermaid";
+import Mermaid from "mermaid/dist/mermaid.esm.min.mjs";
 import hash from "./hash-sum";
 
 const props = defineProps({
@@ -15,7 +15,7 @@ const props = defineProps({
   id: {
     type: String,
     required: true,
-  }
+  },
 });
 
 const onBodyClassChange = (mutationsList, observer) => {
@@ -26,9 +26,14 @@ const onBodyClassChange = (mutationsList, observer) => {
   });
 };
 
-const mutationObserver = new MutationObserver(onBodyClassChange);
-
-mutationObserver.observe(document.body, { attributes: true });
+if (MutationObserver) {
+  const mutationObserver = new MutationObserver(onBodyClassChange);
+  mutationObserver.observe(document.body, { attributes: true });
+} else {
+  const MutationObserver = require("mutation-observer");
+  const mutationObserver = new MutationObserver(onBodyClassChange);
+  mutationObserver.observe(document.body, { attributes: true });
+}
 
 const svg = ref(undefined);
 onMounted(() => renderChart());
@@ -43,12 +48,8 @@ const renderChart = () => {
     startOnLoad: false,
   });
   // console.log("... mermaid rendering", hasDarkClass);
-  Mermaid.mermaidAPI.render(
-    props.id,
-    props.graph,
-    (svg_rendered, ...args) => {
-      svg.value = svg_rendered;
-    }
-  );
+  Mermaid.mermaidAPI.render(props.id, props.graph, (svg_rendered, ...args) => {
+    svg.value = svg_rendered;
+  });
 };
 </script>
