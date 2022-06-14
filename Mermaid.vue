@@ -47,7 +47,7 @@ const renderChart = () => {
     startOnLoad: false,
   });
   // console.log("... mermaid rendering", hasDarkClass);
-  Mermaid.mermaidAPI.render(props.id, props.graph, (svg_rendered, ...args) => {
+  Mermaid.mermaidAPI.render(props.id, decodeURIComponent(props.graph), (svg_rendered, ...args) => {
     svg.value = svg_rendered;
   });
 };
