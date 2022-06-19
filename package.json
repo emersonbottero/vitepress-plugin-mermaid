@@ -32,6 +32,6 @@
     "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha"
   },
   "devDependencies": {
-    "vitepress": "^1.0.0"
+    "vitepress": "^1.0.0-alpha"
   }
 }
