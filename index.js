@@ -61,7 +61,7 @@ const mermaidPlugin = (md) => {
       try {
         const content = token.content.trim();
         const key = `mermaid_${sum(index)}`;
-        return `<Mermaid id="${key}"  graph="${content}"></Mermaid>`;
+        return `<Mermaid id="${key}"  graph="${encodeURIComponent(content)}"></Mermaid>`;
       } catch (err) {
         return `<pre>${err}</pre>`;
       }
