@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-mermaid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add mermaid support for Vitepress",
   "main": "index.js",
   "scripts": {
@@ -29,9 +29,9 @@
   "peerDependencies": {
     "mermaid": "^8.0.0 || ^9.0.0",
     "mutation-observer": "^1.0.0",
-    "vitepress": "^0.21.6 || ^1.0.0"
+    "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha"
   },
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.2"
+    "vitepress": "^1.0.0"
   }
 }

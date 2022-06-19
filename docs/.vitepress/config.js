@@ -44,10 +44,7 @@ function sidebarGuide() {
     {
       text: "Introduction",
       collapsible: true,
-      items: [
-        { text: "Getting Started", link: "/guide/getting-started" },
-        { text: "Examples", link: "/guide/examples" },
-      ],
+      items: [{ text: "Getting Started", link: "/guide/getting-started" }],
     },
   ];
 }

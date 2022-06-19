@@ -11,9 +11,6 @@ hero:
     - theme: brand
       text: Get Started
       link: /guide/getting-started
-    - theme: alt
-      text: Examples
-      link: /guide/examples
 
 features:
   - title: "Mermaid: Diagram and charting tools"
