@@ -42,13 +42,20 @@ const renderChart = () => {
   document.body.classList.forEach((i) => {
     if (i.toLowerCase().includes("dark")) hasDarkClass = true;
   });
+  document.documentElement.classList.forEach((i) => {
+    if (i.toLowerCase().includes("dark")) hasDarkClass = true;
+  });
   Mermaid.mermaidAPI.initialize({
     theme: hasDarkClass ? "dark" : "",
     startOnLoad: false,
   });
   // console.log("... mermaid rendering", hasDarkClass);
-  Mermaid.mermaidAPI.render(props.id, decodeURIComponent(props.graph), (svg_rendered, ...args) => {
-    svg.value = svg_rendered;
-  });
+  Mermaid.mermaidAPI.render(
+    props.id,
+    decodeURIComponent(props.graph),
+    (svg_rendered, ...args) => {
+      svg.value = svg_rendered;
+    }
+  );
 };
 </script>
