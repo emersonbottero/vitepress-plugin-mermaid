@@ -17,25 +17,26 @@ const props = defineProps({
   },
 });
 
-const onBodyClassChange = (mutationsList, observer) => {
-  mutationsList.forEach((mutation) => {
-    if (mutation.attributeName === "class") {
-      renderChart();
-    }
-  });
-};
-
-if (MutationObserver) {
-  const mutationObserver = new MutationObserver(onBodyClassChange);
-  mutationObserver.observe(document.body, { attributes: true });
-} else {
-  const MutationObserver = require("mutation-observer");
-  const mutationObserver = new MutationObserver(onBodyClassChange);
-  mutationObserver.observe(document.body, { attributes: true });
-}
-
 const svg = ref(undefined);
-onMounted(() => renderChart());
+onMounted(() => {
+  const mut = new MutationObserver((mutations, mut) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === "class") {
+        renderChart();
+      }
+    });
+  });
+
+  mut.observe(document.documentElement, {
+    attributes: true,
+  });
+
+  mut.observe(document.body, {
+    attributes: true,
+  });
+
+  renderChart();
+});
 
 const renderChart = () => {
   let hasDarkClass = false;
