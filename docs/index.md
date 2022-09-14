@@ -19,4 +19,6 @@ features:
     details: It detect theme changes and switch to dark/light.
   - title: Images are supported
     details: Since it uses the mermaid api you can use images.
+  - title: Set theme per page
+    details: Frontmatter options available.
 ---

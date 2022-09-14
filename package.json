@@ -1,9 +1,10 @@
 {
   "name": "vitepress-plugin-mermaid",
-  "version": "1.0.2",
+  "version": "2.0.3",
   "description": "Add mermaid support for Vitepress",
-  "main": "index.js",
   "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
@@ -11,6 +12,18 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emersonbottero/vitepress-plugin-mermaid.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vitepress-plugin-mermaid.umd.js",
+  "module": "./dist/vitepress-plugin-mermaid.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vitepress-plugin-mermaid.es.js",
+      "require": "./dist/vitepress-plugin-mermaid.umd.js"
+    },
+    "./Mermaid.vue": "./dist/Mermaid.vue"
   },
   "keywords": [
     "vitepress",
@@ -21,16 +34,15 @@
   "bugs": {
     "url": "https://github.com/emersonbottero/vitepress-plugin-mermaid/issues"
   },
-  "files": [
-    "Mermaid.vue",
-    "index.js"
-  ],
   "homepage": "https://github.com/emersonbottero/vitepress-plugin-mermaid#readme",
   "peerDependencies": {
     "mermaid": "^8.0.0 || ^9.0.0",
+    "vite-plugin-md": "^0.20.4",
     "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha"
   },
   "devDependencies": {
+    "@types/mermaid": "^8.2.9",
+    "vite-plugin-static-copy": "^0.9.0",
     "vitepress": "^1.0.0-alpha"
   }
 }
