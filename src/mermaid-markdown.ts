@@ -1,4 +1,4 @@
-const mermaidPlugin = (md) => {
+export const mermaidMarkdown = (md) => {
   const sum = (o) => {
     function pad(hash, len) {
       while (hash.length < len) {
@@ -53,7 +53,7 @@ const mermaidPlugin = (md) => {
     return pad(foldValue(0, o, "", []).toString(16), 8);
   };
 
-  const temp = md.renderer.rules.fence.bind(md.renderer.rules);
+  const fence = md.renderer.rules.fence.bind(md.renderer.rules);
   md.renderer.rules.fence = (tokens, index, options, env, slf) => {
     const token = tokens[index];
 
@@ -68,8 +68,6 @@ const mermaidPlugin = (md) => {
         return `<pre>${err}</pre>`;
       }
     }
-    return temp(tokens, index, options, env, slf);
+    return fence(tokens, index, options, env, slf);
   };
 };
-
-module.exports = mermaidPlugin;

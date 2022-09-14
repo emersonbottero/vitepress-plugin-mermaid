@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-import MermaidPlugin from "../../index.js";
+import MermaidPlugin from "../../src/mermaid-markdown.js";
 
 export default defineConfig({
   lang: "en-US",

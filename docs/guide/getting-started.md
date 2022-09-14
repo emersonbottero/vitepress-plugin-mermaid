@@ -1,3 +1,8 @@
+---
+mermaidTheme: forest
+Title: Mas Bah
+---
+
 # Getting Started
 
 This section will help you add mermaid support for VitePress.
