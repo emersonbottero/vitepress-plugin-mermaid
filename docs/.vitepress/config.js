@@ -5,7 +5,7 @@ export default defineConfig({
   lang: "en-US",
   title: "VitePress Plugin Mermaid",
   description: "Mermaid support for vitepress",
-
+  base: "/vitepress-plugin-mermaid/",
   lastUpdated: true,
   markdown: {
     config: MermaidMarkdown,
