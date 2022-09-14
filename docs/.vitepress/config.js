@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-import MermaidPlugin from "../../src/mermaid-markdown.js";
+import { MermaidMarkdown } from "../../src/mermaid-markdown";
 
 export default defineConfig({
   lang: "en-US",
@@ -7,16 +7,15 @@ export default defineConfig({
   description: "Mermaid support for vitepress",
 
   lastUpdated: true,
+  markdown: {
+    config: MermaidMarkdown,
+  },
 
   themeConfig: {
     nav: nav(),
 
     sidebar: {
       "/guide/": sidebarGuide(),
-    },
-
-    markdown: {
-      config: MermaidPlugin,
     },
 
     socialLinks: [
@@ -28,7 +27,7 @@ export default defineConfig({
 
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2019-present Evan You",
+      copyright: "Copyright © 2021-present Emerson Bottero",
     },
   },
 });
@@ -44,7 +43,10 @@ function sidebarGuide() {
     {
       text: "Introduction",
       collapsible: true,
-      items: [{ text: "Getting Started", link: "/guide/getting-started" }],
+      items: [
+        { text: "Getting Started", link: "/guide/getting-started" },
+        { text: "More Examples", link: "/guide/more-examples" },
+      ],
     },
   ];
 }

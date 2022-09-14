@@ -1,4 +1,4 @@
-export const mermaidMarkdown = (md) => {
+export const MermaidMarkdown = (md) => {
   const sum = (o) => {
     function pad(hash, len) {
       while (hash.length < len) {

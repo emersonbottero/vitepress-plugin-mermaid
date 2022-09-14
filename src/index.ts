@@ -1,5 +1,5 @@
 import { Plugin } from "vite";
-export { mermaidMarkdown } from "./mermaid-markdown";
+export { MermaidMarkdown } from "./mermaid-markdown";
 
 const registerMermaidComponent = (code: string) => {
   if (code.includes("```mermaid")) {
