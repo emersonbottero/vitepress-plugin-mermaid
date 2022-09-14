@@ -24,16 +24,32 @@ let mut = null;
 const { page } = useData();
 const { frontmatter } = toRaw(page.value);
 const mermaidPageTheme = frontmatter.mermaidTheme || "";
+
 onMounted(async () => {
-  console.log("...=");
-  console.dir(mermaidPageTheme);
   mut = new MutationObserver(() => renderChart());
   mut.observe(document.documentElement, { attributes: true });
   renderChart();
   //refresh images on first render
   setTimeout(() => {
-    renderChart();
-  }, 300);
+    let imgElements = document.getElementsByTagName("img");
+    let imgs = Array.from(imgElements);
+    let counter = imgs.length;
+    console.log(counter, counter == 0);
+    Promise.all(
+      imgs
+        .filter((img) => !img.complete)
+        .map(
+          (img) =>
+            new Promise((resolve) => {
+              // console.log(".....");
+              img.onload = img.onerror = resolve;
+            })
+        )
+    ).then(() => {
+      // console.log("images finished loading");
+      renderChart();
+    });
+  }, 100);
 });
 
 onUnmounted(() => mut.disconnect());
