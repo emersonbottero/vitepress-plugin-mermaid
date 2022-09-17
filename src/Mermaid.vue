@@ -34,7 +34,7 @@ onMounted(async () => {
     let imgElements = document.getElementsByTagName("img");
     let imgs = Array.from(imgElements);
     let counter = imgs.length;
-    console.log(counter, counter == 0);
+    // console.log(counter, counter == 0);
     Promise.all(
       imgs
         .filter((img) => !img.complete)

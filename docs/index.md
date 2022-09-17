@@ -13,12 +13,12 @@ hero:
       link: /guide/getting-started
 
 features:
-  - title: "Mermaid: Diagram and charting tools"
+  - title: 🧜‍♀️ Mermaid, Diagram and charting tools
     details: Mermaid lets you create diagrams and visualizations using text and code..
-  - title: Dark theme support build-in
+  - title: 🌚 Dark theme support build-in
     details: It detect theme changes and switch to dark/light.
-  - title: Images are supported
+  - title: 📸 Images are supported
     details: Since it uses the mermaid api you can use images.
-  - title: Set theme per page
+  - title: 🧩 Set theme per page
     details: Frontmatter options available.
 ---

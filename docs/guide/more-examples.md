@@ -20,6 +20,7 @@ Images and links can be used as well..
 
 ::: warning
 You should place your image files in the public folder!
+In case you set an base you should prefix images with it.
 :::
 
 ````
