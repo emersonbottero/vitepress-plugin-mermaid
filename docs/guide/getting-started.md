@@ -32,12 +32,12 @@ Add markdown
 ```js
 // .vitepress/config.js
 
-import MermaidPlugin from "vitepress-plugin-mermaid";
+import { MermaidMarkdown } from "vitepress-plugin-mermaid";
 
 module.exports = {
   ...
   markdown: {
-    config: MermaidPlugin,
+    config: MermaidMarkdown,
   },
   ...
 }
