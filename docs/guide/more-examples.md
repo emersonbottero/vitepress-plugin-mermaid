@@ -23,9 +23,7 @@ You should place your image files in the public folder!
 In case you set an base you should prefix images with it.
 :::
 
-````
-
-```mermaid
+```mmd
 graph LR;
     K([<img src='/vitepress-plugin-mermaid/K.png' width='60' >])-.->G((<img id='git' src='/vitepress-plugin-mermaid/Octocat.png' width='50' >));
     H([<img id='helm' src='/vitepress-plugin-mermaid/helm.png' width='60' >])-.->G
@@ -36,11 +34,10 @@ class G,D,A,K,H img
 click G "http://www.github.com" "This is a link" _blank
 click K "https://kustomize.io/" _blank
 ```
-````
 
 # Render
 
-In lith mode the arrows are green since we are using forest here  
+In light mode the arrows are green since we are using forest here  
 Kustomize and github are links in here!
 
 ```mermaid
