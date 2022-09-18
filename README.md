@@ -17,7 +17,7 @@ npm i vitepress-plugin-mermaid -s
 Add plugin
 
 ```js
-//.vite.config.ts
+//vite.config.ts
 import { defineConfig } from "vite";
 import { MermaidPlugin } from "vitepress-plugin-mermaid";
 
@@ -29,8 +29,7 @@ export default defineConfig({
 Add markdown
 
 ```js
-// .vitepress/config.js
-
+//.vitepress/config.js
 import  { MermaidMarkdown } from "vitepress-plugin-mermaid";
 
 module.exports = {

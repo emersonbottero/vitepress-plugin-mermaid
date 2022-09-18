@@ -1,64 +1,29 @@
 import { Plugin } from "vite";
 export { MermaidMarkdown } from "./mermaid-markdown";
+//TODO: use this when mermaid 9.2 is published!
+//import { MermaidConfig } from "mermaid/dist/config.type";
 
-const registerMermaidComponent = (code: string) => {
-  if (code.includes("```mermaid")) {
-    const scriptSetupTag = /<script.*?setup\b[^<]/gi.exec(code);
+interface MermaidConfig {}
 
-    if (scriptSetupTag?.length) {
-      code = code.replace(
-        scriptSetupTag[0],
-        scriptSetupTag[0] +
-          '\nimport Mermaid from "vitepress-plugin-mermaid/Mermaid.vue"\n'
-      );
-
-      //   console.log(code);
-
-      return code;
-    }
-
-    const frontmatterData = /---([^-]+)---/.exec(code);
-    if (code.slice(0, 3) === "---" && frontmatterData?.length) {
-      const frontmatterCode = frontmatterData[0];
-      code = code.replace(
-        frontmatterCode,
-        frontmatterCode +
-          '\n<script setup>import Mermaid from "vitepress-plugin-mermaid/Mermaid.vue";</script>\n'
-      );
-    } else {
-      code =
-        '\n<script setup>import Mermaid from "vitepress-plugin-mermaid/Mermaid.vue";</script>\n' +
-        code;
-    }
-  }
-  return code;
+const DEFAULT_OPTIONS: MermaidConfig = {
+  //We set loose as default here because is needed to load images
+  securityLevel: "loose",
+  startOnLoad: false,
 };
 
-export interface Options {
-  // add plugin options here
-}
-
-const DEFAULT_OPTIONS: Options = {
-  // set default values
-  //TODO: Add options
-};
-
-export function MermaidPlugin(inlineOptions?: Partial<Options>): Plugin {
+export function MermaidPlugin(inlineOptions?: Partial<MermaidConfig>): Plugin {
   // eslint-disable-next-line no-unused-vars
   const options = {
     ...DEFAULT_OPTIONS,
     ...inlineOptions,
   };
 
+  const virtualModuleId = "virtual:mermaid-config";
+  const resolvedVirtualModuleId = "\0" + virtualModuleId;
+
   return {
     name: "vite-plugin-mermaid",
     enforce: "post",
-
-    config(config, { command }) {
-      // if (command === 'build') {
-      //   config.root = 'foo'
-      // }
-    },
 
     transform(src, id) {
       //Register Mermaid component in vue instance creation
@@ -75,16 +40,17 @@ export function MermaidPlugin(inlineOptions?: Partial<Options>): Plugin {
           map: null, // provide source map if available
         };
       }
+    },
 
-      // if (id.includes("vitepress/dist/client/app/data.js")) {
-      //   console.log(id);
-      //   src = src.replace("return data;", "\nconsole.log(data);\nreturn data;");
-
-      //   return {
-      //     code: src,
-      //     map: null, // provide source map if available
-      //   };
-      // }
+    async resolveId(id) {
+      if (id === virtualModuleId) {
+        return resolvedVirtualModuleId;
+      }
+    },
+    async load(this, id) {
+      if (id === resolvedVirtualModuleId) {
+        return `export default ${JSON.stringify(options)};`;
+      }
     },
   };
 }

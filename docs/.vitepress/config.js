@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import { MermaidMarkdown } from "../../src/mermaid-markdown";
+import { version } from "../../package.json";
 
 export default defineConfig({
   lang: "en-US",
@@ -35,6 +36,7 @@ export default defineConfig({
 function nav() {
   return [
     { text: "Guide", link: "/guide/getting-started", activeMatch: "/guide/" },
+    { text: version, link: "" },
   ];
 }
 
@@ -46,6 +48,7 @@ function sidebarGuide() {
       items: [
         { text: "Getting Started", link: "/guide/getting-started" },
         { text: "More Examples", link: "/guide/more-examples" },
+        { text: "Styled Examples", link: "/guide/styles" },
       ],
     },
   ];
