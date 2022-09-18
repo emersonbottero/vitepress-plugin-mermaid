@@ -24,8 +24,12 @@ let mut = null;
 const { page } = useData();
 const { frontmatter } = toRaw(page.value);
 const mermaidPageTheme = frontmatter.mermaidTheme || "";
+let MermaidConfig;
 
 onMounted(async () => {
+  let settings = await import("virtual:mermaid-config");
+  MermaidConfig = settings.default;
+
   mut = new MutationObserver(() => renderChart());
   mut.observe(document.documentElement, { attributes: true });
   renderChart();
@@ -41,7 +45,6 @@ onMounted(async () => {
         .map(
           (img) =>
             new Promise((resolve) => {
-              // console.log(".....");
               img.onload = img.onerror = resolve;
             })
         )
@@ -56,10 +59,13 @@ onUnmounted(() => mut.disconnect());
 
 const renderChart = () => {
   let hasDarkClass = document.documentElement.classList.contains("dark");
+  MermaidConfig.theme = mermaidPageTheme || MermaidConfig.theme;
+  if (hasDarkClass) MermaidConfig.theme = "dark";
+
+  console.log("initializing with... ", MermaidConfig);
   Mermaid.mermaidAPI.initialize({
+    ...MermaidConfig,
     theme: hasDarkClass ? "dark" : mermaidPageTheme,
-    startOnLoad: false,
-    securityLevel: "loose",
   });
   Mermaid.mermaidAPI.render(
     props.id,
