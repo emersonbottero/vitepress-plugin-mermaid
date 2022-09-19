@@ -62,7 +62,6 @@ const renderChart = () => {
   MermaidConfig.theme = mermaidPageTheme || MermaidConfig.theme;
   if (hasDarkClass) MermaidConfig.theme = "dark";
 
-  console.log("initializing with... ", MermaidConfig);
   Mermaid.mermaidAPI.initialize({
     ...MermaidConfig,
     theme: hasDarkClass ? "dark" : mermaidPageTheme,
