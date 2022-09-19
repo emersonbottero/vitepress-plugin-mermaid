@@ -1,18 +1,17 @@
-import type { DefaultTheme, UserConfig } from "vitepress";
+import { type UserConfig } from "vitepress";
 import { MermaidMarkdown } from "./mermaid-markdown";
 import { MermaidPlugin, type MermaidConfig } from "./mermaid-plugin";
 
 export { MermaidMarkdown } from "./mermaid-markdown";
 export { MermaidPlugin } from "./mermaid-plugin";
 
-export interface VitePressMermaidOptions<ThemeConfig = any>
-  extends UserConfig<ThemeConfig> {
-  mermaid?: Partial<MermaidConfig>;
+declare module "vitepress" {
+  interface UserConfig {
+    mermaid?: MermaidConfig;
+  }
 }
 
-export const withMermaid = (
-  config: VitePressMermaidOptions<DefaultTheme.Config>
-) => {
+export const withMermaid = (config: UserConfig) => {
   if (!config.markdown) config.markdown = {};
   const markdownConfigOriginal = config.markdown.config || (() => {});
   config.markdown.config = (...args) => {

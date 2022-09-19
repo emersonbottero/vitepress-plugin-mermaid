@@ -1,33 +1,36 @@
+import { defineConfig } from "vitepress";
 import { withMermaid } from "../../src";
 import { version } from "../../package.json";
 
-export default withMermaid({
-  lang: "en-US",
-  title: "VitePress Plugin Mermaid",
-  description: "Mermaid support for vitepress",
-  base: "/vitepress-plugin-mermaid/",
-  lastUpdated: true,
+export default withMermaid(
+  defineConfig({
+    lang: "en-US",
+    title: "VitePress Plugin Mermaid",
+    description: "Mermaid support for vitepress",
+    base: "/vitepress-plugin-mermaid/",
+    lastUpdated: true,
 
-  themeConfig: {
-    nav: nav(),
+    themeConfig: {
+      nav: nav(),
 
-    sidebar: {
-      "/guide/": sidebarGuide(),
-    },
-
-    socialLinks: [
-      {
-        icon: "github",
-        link: "https://github.com/emersonbottero/vitepress-plugin-mermaid",
+      sidebar: {
+        "/guide/": sidebarGuide(),
       },
-    ],
 
-    footer: {
-      message: "Released under the MIT License.",
-      copyright: "Copyright © 2021-present Emerson Bottero",
+      socialLinks: [
+        {
+          icon: "github",
+          link: "https://github.com/emersonbottero/vitepress-plugin-mermaid",
+        },
+      ],
+
+      footer: {
+        message: "Released under the MIT License.",
+        copyright: "Copyright © 2021-present Emerson Bottero",
+      },
     },
-  },
-});
+  })
+);
 
 function nav() {
   return [

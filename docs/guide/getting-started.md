@@ -22,15 +22,18 @@ Add wrapper
 
 ```js
 // .vitepress/config.js
+import { defineConfig } from "vitepress";
 import { withMermaid } from "vitepress-plugin-mermaid";
 
-export default withMermaid({
-  // your existing vitepress config...
-  // optionally, you can pass MermaidConfig
-  mermaid: {
-    // refer https://mermaid-js.github.io/mermaid/#/Setup for options
-  },
-});
+export default withMermaid(
+  defineConfig({
+    // your existing vitepress config...
+    // optionally, you can pass MermaidConfig
+    mermaid: {
+      // refer https://mermaid-js.github.io/mermaid/#/Setup for options
+    },
+  })
+);
 ```
 
 Use in any Markdown file
