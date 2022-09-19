@@ -2,7 +2,9 @@ import { Plugin } from "vite";
 //TODO: use this when mermaid 9.2 is published!
 //import { MermaidConfig } from "mermaid/dist/config.type";
 
-interface MermaidConfig {}
+export interface MermaidConfig {
+  [x: string]: any;
+}
 
 const DEFAULT_OPTIONS: MermaidConfig = {
   //We set loose as default here because is needed to load images
