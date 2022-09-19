@@ -24,11 +24,14 @@ let mut = null;
 const { page } = useData();
 const { frontmatter } = toRaw(page.value);
 const mermaidPageTheme = frontmatter.mermaidTheme || "";
-let MermaidConfig;
+let MermaidConfig = {
+  securityLevel: "loose",
+  startOnLoad: false,
+};
 
 onMounted(async () => {
   let settings = await import("virtual:mermaid-config");
-  MermaidConfig = settings.default;
+  if (settings?.default) MermaidConfig = settings.default;
 
   mut = new MutationObserver(() => renderChart());
   mut.observe(document.documentElement, { attributes: true });
