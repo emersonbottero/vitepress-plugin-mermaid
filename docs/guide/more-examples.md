@@ -52,6 +52,22 @@ click G "http://www.github.com" "This is a link" _blank
 click K "https://kustomize.io/" _blank
 ```
 
+## Pie
+
+```mmd
+pie title Pets adopted by volunteers
+  "Dogs" : 386
+  "Cats" : 85
+  "Rats" : 15
+```
+
+```mermaid
+pie title Pets adopted by volunteers
+  "Dogs" : 386
+  "Cats" : 85
+  "Rats" : 15
+```
+
 <style>
   #git {
     border-radius: 50px;

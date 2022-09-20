@@ -36,26 +36,29 @@ onMounted(async () => {
   mut = new MutationObserver(() => renderChart());
   mut.observe(document.documentElement, { attributes: true });
   renderChart();
+
   //refresh images on first render
-  setTimeout(() => {
-    let imgElements = document.getElementsByTagName("img");
-    let imgs = Array.from(imgElements);
-    let counter = imgs.length;
-    // console.log(counter, counter == 0);
-    Promise.all(
-      imgs
-        .filter((img) => !img.complete)
-        .map(
-          (img) =>
-            new Promise((resolve) => {
-              img.onload = img.onerror = resolve;
-            })
-        )
-    ).then(() => {
-      // console.log("images finished loading");
-      renderChart();
-    });
-  }, 100);
+  const hasImages =
+    /<img([\w\W]+?)>/.exec(decodeURIComponent(props.graph))?.length > 0;
+  if (hasImages)
+    setTimeout(() => {
+      let imgElements = document.getElementsByTagName("img");
+      let imgs = Array.from(imgElements);
+      if (imgs.length) {
+        Promise.all(
+          imgs
+            .filter((img) => !img.complete)
+            .map(
+              (img) =>
+                new Promise((resolve) => {
+                  img.onload = img.onerror = resolve;
+                })
+            )
+        ).then(() => {
+          renderChart();
+        });
+      }
+    }, 100);
 });
 
 onUnmounted(() => mut.disconnect());
