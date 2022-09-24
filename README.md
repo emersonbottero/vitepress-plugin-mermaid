@@ -9,7 +9,7 @@ and a [complex example 😎](https://emersonbottero.github.io/vitepress-plugin-m
 ## Install
 
 ```bash
-npm i vitepress-plugin-mermaid -s
+npm i vitepress-plugin-mermaid mermaid -D
 ```
 
 ## Setup it up
