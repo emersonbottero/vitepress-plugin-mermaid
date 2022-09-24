@@ -36,9 +36,7 @@
   },
   "homepage": "https://github.com/emersonbottero/vitepress-plugin-mermaid#readme",
   "peerDependencies": {
-    "mermaid": "^8.0.0 || ^9.0.0",
-    "vite-plugin-md": "^0.20.4",
-    "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha"
+    "mermaid": "^8.0.0 || ^9.0.0"
   },
   "devDependencies": {
     "@types/mermaid": "^8.2.9",
