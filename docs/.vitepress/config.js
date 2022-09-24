@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import { withMermaid } from "../../src";
+
 import { version } from "../../package.json";
 
 export default withMermaid(
