@@ -18,7 +18,10 @@ module.exports = defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "MermaidPlugin",
-      fileName: (format: string) => `vitepress-plugin-mermaid.${format}.js`,
+      fileName: (format: string) =>
+        format == "es"
+          ? `vitepress-plugin-mermaid.${format}.mjs`
+          : `vitepress-plugin-mermaid.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

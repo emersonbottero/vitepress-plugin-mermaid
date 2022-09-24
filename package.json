@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-mermaid",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Add mermaid support for Vitepress",
   "scripts": {
     "dev": "vite build --watch",
@@ -17,10 +17,10 @@
     "dist"
   ],
   "main": "./dist/vitepress-plugin-mermaid.umd.js",
-  "module": "./dist/vitepress-plugin-mermaid.es.js",
+  "module": "./dist/vitepress-plugin-mermaid.es.mjs",
   "exports": {
     ".": {
-      "import": "./dist/vitepress-plugin-mermaid.es.js",
+      "import": "./dist/vitepress-plugin-mermaid.es.mjs",
       "require": "./dist/vitepress-plugin-mermaid.umd.js"
     },
     "./Mermaid.vue": "./dist/Mermaid.vue"
