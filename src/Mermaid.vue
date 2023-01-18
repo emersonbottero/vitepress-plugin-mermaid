@@ -68,10 +68,7 @@ const renderChart = () => {
   MermaidConfig.theme = mermaidPageTheme || MermaidConfig.theme;
   if (hasDarkClass) MermaidConfig.theme = "dark";
 
-  Mermaid.mermaidAPI.initialize({
-    ...MermaidConfig,
-    theme: hasDarkClass ? "dark" : mermaidPageTheme,
-  });
+  Mermaid.mermaidAPI.initialize(MermaidConfig);
   Mermaid.mermaidAPI.render(
     props.id,
     decodeURIComponent(props.graph),
