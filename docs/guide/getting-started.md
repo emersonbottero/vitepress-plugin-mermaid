@@ -13,7 +13,7 @@ You can still highlight mermaid code with mmd as language
 ## Install
 
 ```bash
-npm i vitepress-plugin-mermaid mermaid -D
+npm i vitepress-plugin-mermaid mermaid @mermaid-js/mermaid-mindmap -D
 ```
 
 ## Setup it up
