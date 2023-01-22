@@ -28,6 +28,7 @@ graph LR;
     K([<img src='/vitepress-plugin-mermaid/K.png' width='60' >])-.->G((<img id='git' src='/vitepress-plugin-mermaid/Octocat.png' width='50' >));
     H([<img id='helm' src='/vitepress-plugin-mermaid/helm.png' width='60' >])-.->G
     G-->A;
+    G-->F(eeee)
     A(<img src='/vitepress-plugin-mermaid/argo-cd.png' width='60' >)-->D(<img src='/vitepress-plugin-mermaid/ocp.png' width='60' >);
 classDef img fill:none,color:none,stroke:none,border-radius:50px
 class G,D,A,K,H img
@@ -40,16 +41,31 @@ click K "https://kustomize.io/" _blank
 In light mode the arrows are green since we are using forest here  
 Kustomize and github are links in here!
 
+
 ```mermaid
 graph LR;
     K([<img src='/vitepress-plugin-mermaid/K.png' width='60' >])-.->G((<img id='git' src='/vitepress-plugin-mermaid/Octocat.png' width='50' >));
     H([<img id='helm' src='/vitepress-plugin-mermaid/helm.png' width='60' >])-.->G
     G-->A;
     A(<img src='/vitepress-plugin-mermaid/argo-cd.png' width='60' >)-->D(<img src='/vitepress-plugin-mermaid/ocp.png' width='60' >);
-classDef img fill:none,color:none,stroke:none,border-radius:50px
-class G,D,A,K,H img
-click G "http://www.github.com" "This is a link" _blank
-click K "https://kustomize.io/" _blank
+classDef img fill:none,color:none,stroke:none,borderRadius:50px
+class G,D,A,K,H,B img
+%%click G "http://www.github.com" "This is a link" _blank
+%%click K "https://kustomize.io/" _blank
+```
+
+<script>
+  import mindmap from "@mermaid-js/mermaid-mindmap"
+</script>
+
+## Mindmap supported
+
+```mermaid
+mindmap
+Root
+    A
+      B
+      C
 ```
 
 ## Pie

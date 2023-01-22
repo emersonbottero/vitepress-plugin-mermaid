@@ -11,6 +11,10 @@ module.exports = defineConfig({
           src: "src/Mermaid.vue",
           dest: "./",
         },
+        {
+          src: "src/mermaid.ts",
+          dest: "./",
+        },
       ],
     }),
   ],

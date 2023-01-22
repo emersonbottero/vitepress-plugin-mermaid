@@ -4,8 +4,13 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref, toRaw } from "vue";
-import Mermaid from "mermaid";
+import { render } from "./mermaid";
+
+//get mermaid settings
 import { useData } from "vitepress";
+const { page } = useData();
+const { frontmatter } = toRaw(page.value);
+const mermaidPageTheme = frontmatter.mermaidTheme || "";
 
 const props = defineProps({
   graph: {
@@ -21,21 +26,10 @@ const props = defineProps({
 const svg = ref(null);
 let mut = null;
 
-const { page } = useData();
-const { frontmatter } = toRaw(page.value);
-const mermaidPageTheme = frontmatter.mermaidTheme || "";
-let MermaidConfig = {
-  securityLevel: "loose",
-  startOnLoad: false,
-};
-
 onMounted(async () => {
-  let settings = await import("virtual:mermaid-config");
-  if (settings?.default) MermaidConfig = settings.default;
-
   mut = new MutationObserver(() => renderChart());
   mut.observe(document.documentElement, { attributes: true });
-  renderChart();
+  await renderChart();
 
   //refresh images on first render
   const hasImages =
@@ -63,21 +57,29 @@ onMounted(async () => {
 
 onUnmounted(() => mut.disconnect());
 
-const renderChart = () => {
-  let hasDarkClass = document.documentElement.classList.contains("dark");
-  MermaidConfig.theme = mermaidPageTheme || MermaidConfig.theme;
-  if (hasDarkClass) MermaidConfig.theme = "dark";
+const renderChart = async () => {
+  console.log("rendering chart" + props.id + props.graph);
+  const hasDarkClass = document.documentElement.classList.contains("dark");
+  const mermaidConfig = {
+    securityLevel: "loose",
+    startOnLoad: true,
+  };
 
-  Mermaid.mermaidAPI.initialize({
-    ...MermaidConfig,
-    theme: hasDarkClass ? "dark" : mermaidPageTheme,
-  });
-  Mermaid.mermaidAPI.render(
+  if (mermaidPageTheme) mermaidConfig.theme = mermaidPageTheme;
+  if (hasDarkClass) mermaidConfig.theme = "dark";
+
+  console.log({ mermaidConfig });
+  let svgCode = await render(
     props.id,
     decodeURIComponent(props.graph),
-    (svg_rendered, ...args) => {
-      svg.value = svg_rendered;
-    }
+    mermaidConfig
   );
+  // This is a hack to force v-html to re-render, otherwise the diagram disappears
+  // when **switching themes** or **reloading the page**.
+  // The cause is that the diagram is deleted during rendering (out of Vue's knowledge).
+  // Because svgCode does NOT change, v-html does not re-render.
+  // This is not required for all diagrams, but it is required for c4c, mindmap and zenuml.
+  const salt = Math.random().toString(36).substring(7);
+  svg.value = `${svgCode} <span style="display: none">${salt}</span>`;
 };
 </script>
