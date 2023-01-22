@@ -73,7 +73,6 @@ const renderChart = async () => {
 
   if (mermaidPageTheme) mermaidConfig.theme = mermaidPageTheme;
   if (hasDarkClass) mermaidConfig.theme = "dark";
-  console.log(mermaidConfig, { ...pluginSettings.value }, mermaidPageTheme);
 
   let svgCode = await render(
     props.id,
