@@ -8,6 +8,11 @@ import { render } from "./mermaid";
 
 //get mermaid settings
 import { useData } from "vitepress";
+
+const pluginSettings = ref({
+  securityLevel: "loose",
+  startOnLoad: false,
+});
 const { page } = useData();
 const { frontmatter } = toRaw(page.value);
 const mermaidPageTheme = frontmatter.mermaidTheme || "";
@@ -27,6 +32,9 @@ const svg = ref(null);
 let mut = null;
 
 onMounted(async () => {
+  let settings = await import("virtual:mermaid-config");
+  if (settings?.default) pluginSettings.value = settings.default;
+
   mut = new MutationObserver(() => renderChart());
   mut.observe(document.documentElement, { attributes: true });
   await renderChart();
@@ -59,13 +67,13 @@ onUnmounted(() => mut.disconnect());
 
 const renderChart = async () => {
   const hasDarkClass = document.documentElement.classList.contains("dark");
-  const mermaidConfig = {
-    securityLevel: "loose",
-    startOnLoad: true,
+  let mermaidConfig = {
+    ...pluginSettings.value,
   };
 
   if (mermaidPageTheme) mermaidConfig.theme = mermaidPageTheme;
   if (hasDarkClass) mermaidConfig.theme = "dark";
+  console.log(mermaidConfig, { ...pluginSettings.value }, mermaidPageTheme);
 
   let svgCode = await render(
     props.id,
