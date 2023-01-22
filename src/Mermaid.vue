@@ -58,7 +58,6 @@ onMounted(async () => {
 onUnmounted(() => mut.disconnect());
 
 const renderChart = async () => {
-  console.log("rendering chart" + props.id + props.graph);
   const hasDarkClass = document.documentElement.classList.contains("dark");
   const mermaidConfig = {
     securityLevel: "loose",
@@ -68,7 +67,6 @@ const renderChart = async () => {
   if (mermaidPageTheme) mermaidConfig.theme = mermaidPageTheme;
   if (hasDarkClass) mermaidConfig.theme = "dark";
 
-  console.log({ mermaidConfig });
   let svgCode = await render(
     props.id,
     decodeURIComponent(props.graph),
