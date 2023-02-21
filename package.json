@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "mermaid": "^9.3.0",
+    "mermaid": "^10.0.0",
     "vite": "3",
     "vite-plugin-static-copy": "^0.9.0",
     "vitepress": "^1.0.0-alpha"
