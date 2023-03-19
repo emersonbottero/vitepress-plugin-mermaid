@@ -1,5 +1,5 @@
 <template>
-  <div v-html="svg"></div>
+  <div v-html="svg" class="mermaid"></div>
 </template>
 
 <script setup>
