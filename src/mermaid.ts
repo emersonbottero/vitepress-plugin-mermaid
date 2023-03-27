@@ -19,10 +19,13 @@ export const render = async (
   await init;
   mermaid.initialize(config);
 
-  const svg =
-    parseFloat(version) <= 9.1
-      ? mermaid.render(id, code)
-      : await mermaid.renderAsync(id, code);
+    const _version = parseFloat(version)
 
-  return svg;
+    if (_version <= 9.1) {
+        return mermaid.render(id, code);
+    } else if (_version < 10) {
+        return await mermaid.renderAsync(id, code);
+    }
+
+    return (await mermaid.render(id, code)).svg;
 };
