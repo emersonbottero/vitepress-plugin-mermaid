@@ -18,11 +18,6 @@ export const render = async (
 ): Promise<string> => {
   await init;
   mermaid.initialize(config);
-
-  const svg =
-    parseFloat(version) <= 9.1
-      ? mermaid.render(id, code)
-      : await mermaid.renderAsync(id, code);
-
-  return svg;
+  const result = await mermaid.render(id, code)
+  return result.svg
 };

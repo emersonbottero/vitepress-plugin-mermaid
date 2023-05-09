@@ -1,6 +1,6 @@
 ## Using with styles
 
-```mmd
+```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ff0000'}}}%%
         graph TD
           A[Christmas] -->|Get money| B(Go shopping)

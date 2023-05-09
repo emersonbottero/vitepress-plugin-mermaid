@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-mermaid",
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "Add mermaid support for Vitepress",
   "types": "./dist/mermaid.d.ts",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emersonbottero/vitepress-plugin-mermaid.git"
+    "url": "git+https://altpoint.gitlab.yandexcloud.net/surrealistik/vitepress-plugin-mermaid.git"
   },
   "files": [
     "dist"
@@ -33,18 +33,18 @@
   "author": "Emerson Bottero",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/emersonbottero/vitepress-plugin-mermaid/issues"
+    "url": "https://altpoint.gitlab.yandexcloud.net/surrealistik/vitepress-plugin-mermaid/-/issues"
   },
-  "homepage": "https://github.com/emersonbottero/vitepress-plugin-mermaid#readme",
+  "homepage": "https://altpoint.gitlab.yandexcloud.net/surrealistik/vitepress-plugin-mermaid",
   "peerDependencies": {
     "mermaid": "^8.0.0 || ^9.0.0",
     "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha"
   },
   "devDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "mermaid": "^9.3.0",
-    "vite": "3",
-    "vite-plugin-static-copy": "^0.9.0",
-    "vitepress": "^1.0.0-alpha"
+    "mermaid": "^10.1.0",
+    "vite": "4.3.5",
+    "vite-plugin-static-copy": "^0.14.0",
+    "vitepress": "^1.0.0-alpha.75"
   }
 }

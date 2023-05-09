@@ -24,7 +24,7 @@ In case you set an base you should prefix images with it.
 :::
 
 
-```mmd
+```mermaid
 graph LR;
     K([...........<img src='/vitepress-plugin-mermaid/K.png' width='60' >...........])-.->G((...........<img id='git' src='/vitepress-plugin-mermaid/Octocat.png' width='50' >...........));
     H([...........<img id='helm' src='/vitepress-plugin-mermaid/helm.png' width='60' >...........])-.->G
