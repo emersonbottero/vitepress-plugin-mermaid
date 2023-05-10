@@ -4,7 +4,7 @@ import path from "path";
 export default defineConfig({
   resolve: {
     alias: {
-      "vitepress-plugin-mermaid/Mermaid.vue": path.join(
+      "@alt-point/vitepress-plugin-mermaid/Mermaid.vue": path.join(
         __dirname,
         "../dist/Mermaid.vue"
       ),
