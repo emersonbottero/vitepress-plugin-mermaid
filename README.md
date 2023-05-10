@@ -3,13 +3,19 @@
 Add mermaid support for Vitepress.
 It detects any dark theme that are set in body as long as it has dark in the name
 
-See the [docs 📕](https://emersonbottero.github.io/vitepress-plugin-mermaid/)  
-and a [complex example 😎](https://emersonbottero.github.io/vitepress-plugin-mermaid/guide/more-examples.html#render)
+[//]: # (See the [docs 📕]&#40;https://emersonbottero.github.io/vitepress-plugin-mermaid/&#41;  )
+
+[//]: # (and a [complex example 😎]&#40;https://emersonbottero.github.io/vitepress-plugin-mermaid/guide/more-examples.html#render&#41;)
 
 ## Install
 
 ```bash
-npm i vitepress-plugin-mermaid mermaid @mermaid-js/mermaid-mindmap -D
+
+npm i @alt-point/vitepress-plugin-mermaid mermaid @mermaid-js/mermaid-mindmap -D
+
+// or 
+
+yarn add -D @alt-point/vitepress-plugin-mermaid mermaid @mermaid-js/mermaid-mindmap
 ```
 
 ## Setup it up
@@ -17,12 +23,14 @@ npm i vitepress-plugin-mermaid mermaid @mermaid-js/mermaid-mindmap -D
 Add wrapper
 
 ```js
+
 // .vitepress/config.js
-import { withMermaid } from "vitepress-plugin-mermaid";
+import { withMermaid } from '@alt-point/vitepress-plugin-mermaid'
 
 export default withMermaid({
   // your existing vitepress config...
 });
+
 ```
 
 Use in any Markdown file

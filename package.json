@@ -1,5 +1,5 @@
 {
-  "name": "vitepress-plugin-mermaid",
+  "name": "@alt-point/vitepress-plugin-mermaid",
   "version": "2.1.0",
   "description": "Add mermaid support for Vitepress",
   "types": "./dist/mermaid.d.ts",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://altpoint.gitlab.yandexcloud.net/surrealistik/vitepress-plugin-mermaid.git"
+    "url": "git+https://github.com/altpoint/vitepress-plugin-mermaid.git"
   },
   "files": [
     "dist"
@@ -33,9 +33,9 @@
   "author": "Emerson Bottero",
   "license": "MIT",
   "bugs": {
-    "url": "https://altpoint.gitlab.yandexcloud.net/surrealistik/vitepress-plugin-mermaid/-/issues"
+    "url": "https://github.com/altpoint/vitepress-plugin-mermaid/issues"
   },
-  "homepage": "https://altpoint.gitlab.yandexcloud.net/surrealistik/vitepress-plugin-mermaid",
+  "homepage": "https://github.com/altpoint/vitepress-plugin-mermaid",
   "peerDependencies": {
     "mermaid": "^8.0.0 || ^9.0.0",
     "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha"
