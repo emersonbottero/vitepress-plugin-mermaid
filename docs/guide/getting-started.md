@@ -23,7 +23,7 @@ Add wrapper
 ```js
 // .vitepress/config.js
 import { defineConfig } from "vitepress";
-import { withMermaid } from "vitepress-plugin-mermaid";
+import { withMermaid } from "@alt-point/vitepress-plugin-mermaid";
 
 export default withMermaid(
   defineConfig({
