@@ -1,5 +1,8 @@
 # vitepress-plugin-mermaid
 
+> **Warning**
+> mermaid max version is 9.1.0
+
 Add mermaid support for Vitepress.
 It detects any dark theme that are set in body as long as it has dark in the name
 
