@@ -6,6 +6,8 @@ import { MermaidConfig } from "mermaid/dist/config.type";
 export { MermaidMarkdown } from "./mermaid-markdown";
 export { MermaidPlugin } from "./mermaid-plugin";
 
+export { UserConfig };
+
 declare module "vitepress" {
   interface UserConfig {
     mermaid?: MermaidConfig;

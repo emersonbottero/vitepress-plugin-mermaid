@@ -1,9 +1,9 @@
 const path = require("path");
 const { defineConfig } = require("vite");
 import { viteStaticCopy } from "vite-plugin-static-copy";
-// import vue from '@vitejs/plugin-vue';
+import dts from "vite-plugin-dts";
 
-module.exports = defineConfig({
+export default defineConfig({
   plugins: [
     viteStaticCopy({
       targets: [
@@ -17,6 +17,7 @@ module.exports = defineConfig({
         },
       ],
     }),
+    dts(),
   ],
   build: {
     lib: {
