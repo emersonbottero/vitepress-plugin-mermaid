@@ -1,6 +1,7 @@
 import { type UserConfig } from "vitepress";
 import { MermaidMarkdown } from "./mermaid-markdown";
-import { MermaidPlugin, type MermaidConfig } from "./mermaid-plugin";
+import { MermaidPlugin } from "./mermaid-plugin";
+import { MermaidConfig } from "mermaid/dist/config.type";
 
 export { MermaidMarkdown } from "./mermaid-markdown";
 export { MermaidPlugin } from "./mermaid-plugin";

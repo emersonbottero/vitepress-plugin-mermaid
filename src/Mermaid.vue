@@ -4,7 +4,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref, toRaw } from "vue";
-import { render } from "./mermaid";
+import { render, init } from "./mermaid";
 
 //get mermaid settings
 import { useData } from "vitepress";
@@ -12,6 +12,7 @@ import { useData } from "vitepress";
 const pluginSettings = ref({
   securityLevel: "loose",
   startOnLoad: false,
+  externalDiagrams: [],
 });
 const { page } = useData();
 const { frontmatter } = toRaw(page.value);
@@ -32,10 +33,11 @@ const svg = ref(null);
 let mut = null;
 
 onMounted(async () => {
+  await init(pluginSettings.value.externalDiagrams);
   let settings = await import("virtual:mermaid-config");
   if (settings?.default) pluginSettings.value = settings.default;
 
-  mut = new MutationObserver(() => renderChart());
+  mut = new MutationObserver(async () => await renderChart());
   mut.observe(document.documentElement, { attributes: true });
   await renderChart();
 
@@ -56,8 +58,8 @@ onMounted(async () => {
                   img.onload = img.onerror = resolve;
                 })
             )
-        ).then(() => {
-          renderChart();
+        ).then(async () => {
+          await renderChart();
         });
       }
     }, 100);
