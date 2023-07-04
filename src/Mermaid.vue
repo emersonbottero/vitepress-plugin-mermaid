@@ -4,7 +4,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref, toRaw } from "vue";
-import { render, init } from "./mermaid";
+import { render, init } from "./render-helpers";
 
 //get mermaid settings
 import { useData } from "vitepress";

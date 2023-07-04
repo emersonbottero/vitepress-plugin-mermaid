@@ -1,9 +1,9 @@
-const path = require("path");
-const { defineConfig } = require("vite");
+import path from "path";
+import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
-// import vue from '@vitejs/plugin-vue';
+import dts from "vite-plugin-dts";
 
-module.exports = defineConfig({
+export default defineConfig({
   plugins: [
     viteStaticCopy({
       targets: [
@@ -12,10 +12,13 @@ module.exports = defineConfig({
           dest: "./",
         },
         {
-          src: "src/mermaid.ts",
+          src: "src/render-helpers.ts",
           dest: "./",
         },
       ],
+    }),
+    dts({
+      insertTypesEntry: true,
     }),
   ],
   build: {
