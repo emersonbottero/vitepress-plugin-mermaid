@@ -1,6 +1,7 @@
 import { type UserConfig } from "vitepress";
 import { MermaidMarkdown } from "./mermaid-markdown";
-import { MermaidPlugin, type MermaidConfig } from "./mermaid-plugin";
+import { MermaidPlugin } from "./mermaid-plugin";
+import { MermaidConfig } from "mermaid/dist/config.type";
 
 export { MermaidMarkdown } from "./mermaid-markdown";
 export { MermaidPlugin } from "./mermaid-plugin";
@@ -22,6 +23,11 @@ export const withMermaid = (config: UserConfig) => {
   if (!config.vite) config.vite = {};
   if (!config.vite.plugins) config.vite.plugins = [];
   config.vite.plugins.push(MermaidPlugin(config.mermaid));
+  if (!config.vite.optimizeDeps) config.vite.optimizeDeps = {};
+  config.vite.optimizeDeps = {
+    ...config.vite.optimizeDeps,
+    include: ["@braintree/sanitize-url", "dayjs", "debug"],
+  };
 
   return config;
 };

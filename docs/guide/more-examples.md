@@ -59,9 +59,9 @@ click K "https://kustomize.io/" _blank
 click G "http://www.github.com" "This is a link" _blank
 ```
 
-<script>
+<!-- <script>
   import mindmap from "@mermaid-js/mermaid-mindmap"
-</script>
+</script> -->
 
 ## Mindmap supported
 

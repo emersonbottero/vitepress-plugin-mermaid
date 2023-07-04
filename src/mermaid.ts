@@ -1,28 +1,21 @@
-import mermaid from "mermaid";
-import { version } from "mermaid/package.json";
-import mindmap from "@mermaid-js/mermaid-mindmap";
+import mermaid, { ExternalDiagramDefinition, MermaidConfig } from "mermaid";
 
-const init = (async () => {
+export const init = async (externalDiagrams: ExternalDiagramDefinition[]) => {
   try {
     if (mermaid.registerExternalDiagrams)
-      await mermaid.registerExternalDiagrams([mindmap]);
+      await mermaid.registerExternalDiagrams(externalDiagrams);
   } catch (e) {
     console.error(e);
   }
-})();
+};
 
 export const render = async (
   id: string,
   code: string,
-  config: any
+  config: MermaidConfig
 ): Promise<string> => {
-  await init;
+  // await init;
   mermaid.initialize(config);
-
-  const svg =
-    parseFloat(version) <= 9.1
-      ? mermaid.render(id, code)
-      : await mermaid.renderAsync(id, code);
-
+  const { svg } = await mermaid.render(id, code);
   return svg;
 };

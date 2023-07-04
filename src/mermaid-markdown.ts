@@ -60,11 +60,19 @@ export const MermaidMarkdown = (md) => {
 
     if (token.info.trim() === "mermaid") {
       try {
-        const content = token.content.trim();
-        const key = `mermaid_${sum(index)}`;
-        return `<Mermaid id="${key}"  graph="${encodeURIComponent(
-          content
-        )}"></Mermaid>`;
+        const key = index;
+        return `
+      <Suspense> 
+      <template #default>
+      <Mermaid id="mermaid-${key}"  graph="${encodeURIComponent(
+          token.content
+        )}"></Mermaid>
+      </template>
+        <!-- loading state via #fallback slot -->
+        <template #fallback>
+          Loading...
+        </template>
+      </Suspense>`;
       } catch (err) {
         return `<pre>${err}</pre>`;
       }

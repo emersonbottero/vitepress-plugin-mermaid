@@ -1,9 +1,12 @@
 import { Plugin } from "vite";
-//TODO: use this when mermaid 9.2 is published!
-//import { MermaidConfig } from "mermaid/dist/config.type";
+import { ExternalDiagramDefinition, MermaidConfig } from "mermaid";
 
-export interface MermaidConfig {
-  [x: string]: any;
+// export interface MermaidConfig {
+//   [x: string]: any;
+// }
+
+interface MermaidPluginOptions extends MermaidConfig {
+  externalDiagrams: ExternalDiagramDefinition[];
 }
 
 const DEFAULT_OPTIONS: MermaidConfig = {
@@ -12,7 +15,9 @@ const DEFAULT_OPTIONS: MermaidConfig = {
   startOnLoad: false,
 };
 
-export function MermaidPlugin(inlineOptions?: Partial<MermaidConfig>): Plugin {
+export function MermaidPlugin(
+  inlineOptions?: Partial<MermaidPluginOptions>
+): Plugin {
   // eslint-disable-next-line no-unused-vars
   const options = {
     ...DEFAULT_OPTIONS,
