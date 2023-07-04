@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-mermaid",
-  "version": "2.0.12",
+  "version": "2.0.11",
   "description": "Add mermaid support for Vitepress",
   "types": "./dist/mermaid.d.ts",
   "scripts": {
@@ -37,8 +37,8 @@
   },
   "homepage": "https://github.com/emersonbottero/vitepress-plugin-mermaid#readme",
   "peerDependencies": {
-    "mermaid": "file:../mermaid/packages/mermaid",
-    "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha"
+    "vitepress": "^0.21.6 || ^1.0.0 || ^1.0.0-alpha",
+    "mermaid": "10"
   },
   "optionalDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0"

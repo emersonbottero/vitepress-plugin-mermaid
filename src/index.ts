@@ -23,6 +23,11 @@ export const withMermaid = (config: UserConfig) => {
   if (!config.vite) config.vite = {};
   if (!config.vite.plugins) config.vite.plugins = [];
   config.vite.plugins.push(MermaidPlugin(config.mermaid));
+  if (!config.vite.optimizeDeps) config.vite.optimizeDeps = {};
+  config.vite.optimizeDeps = {
+    ...config.vite.optimizeDeps,
+    include: ["@braintree/sanitize-url", "dayjs", "debug"],
+  };
 
   return config;
 };
