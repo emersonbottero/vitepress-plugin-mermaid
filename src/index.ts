@@ -28,7 +28,23 @@ export const withMermaid = (config: UserConfig) => {
   if (!config.vite.optimizeDeps) config.vite.optimizeDeps = {};
   config.vite.optimizeDeps = {
     ...config.vite.optimizeDeps,
-    include: ["@braintree/sanitize-url", "dayjs", "debug"],
+    include: [
+      "@braintree/sanitize-url",
+      "dayjs",
+      "debug",
+      "cytoscape-cose-bilkent",
+      "cytoscape",
+    ],
+  };
+  if (!config.vite.resolve) config.vite.resolve = {};
+  if (!config.vite.resolve.alias) config.vite.resolve.alias = {};
+
+  config.vite.resolve.alias = {
+    ...config.vite.resolve.alias,
+    "dayjs/plugin/advancedFormat.js": "dayjs/esm/plugin/advancedFormat",
+    "dayjs/plugin/customParseFormat.js": "dayjs/esm/plugin/customParseFormat",
+    "dayjs/plugin/isoWeek.js": "dayjs/esm/plugin/isoWeek",
+    "cytoscape/dist/cytoscape.umd.js": "cytoscape/dist/cytoscape.esm.js",
   };
 
   return config;
