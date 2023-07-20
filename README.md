@@ -12,7 +12,7 @@ and a [complex example 😎](https://emersonbottero.github.io/vitepress-plugin-m
 ## Install
 
 ```bash
-npm i vitepress-plugin-mermaid mermaid @mermaid-js/mermaid-mindmap -D
+npm i vitepress-plugin-mermaid mermaid -D
 ```
 
 ## Setup it up
