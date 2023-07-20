@@ -1,10 +1,10 @@
 # vitepress-plugin-mermaid
 
-> **Warning**
-> mermaid min version is 9.3.0
-
 Add mermaid support for Vitepress.
 It detects any dark theme that are set in body as long as it has dark in the name
+
+> **Warning**
+> Not compatible with pnpm for now
 
 See the [docs 📕](https://emersonbottero.github.io/vitepress-plugin-mermaid/)  
 and a [complex example 😎](https://emersonbottero.github.io/vitepress-plugin-mermaid/guide/more-examples.html#render)
@@ -25,6 +25,10 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 
 export default withMermaid({
   // your existing vitepress config...
+  mermaid:{
+    //mermaidConfig !theme here works for ligth mode since dark theme is forced in dark mode
+  },
+  ...
 });
 ```
 
