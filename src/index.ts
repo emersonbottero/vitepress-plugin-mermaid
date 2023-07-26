@@ -39,13 +39,25 @@ export const withMermaid = (config: UserConfig) => {
   if (!config.vite.resolve) config.vite.resolve = {};
   if (!config.vite.resolve.alias) config.vite.resolve.alias = {};
 
-  config.vite.resolve.alias = {
+  config.vite.resolve.alias = [
     ...config.vite.resolve.alias,
-    "dayjs/plugin/advancedFormat.js": "dayjs/esm/plugin/advancedFormat",
-    "dayjs/plugin/customParseFormat.js": "dayjs/esm/plugin/customParseFormat",
-    "dayjs/plugin/isoWeek.js": "dayjs/esm/plugin/isoWeek",
-    "cytoscape/dist/cytoscape.umd.js": "cytoscape/dist/cytoscape.esm.js",
-  };
+    {
+      find: "dayjs/plugin/advancedFormat.js",
+      replacement: "dayjs/esm/plugin/advancedFormat"
+    },
+    {
+      find: "dayjs/plugin/customParseFormat.js",
+      replacement: "dayjs/esm/plugin/customParseFormat"
+    },
+    {
+      find: "dayjs/plugin/isoWeek.js",
+      replacement: "dayjs/esm/plugin/isoWeek"
+    },
+    {
+      find: "cytoscape/dist/cytoscape.umd.js",
+      replacement: "cytoscape/dist/cytoscape.esm.js"
+    },
+  ];
 
   return config;
 };
