@@ -5,6 +5,9 @@ import { version } from "../../package.json";
 
 export default withMermaid(
   defineConfig({
+    // mermaidPlugin: {
+    //   class: "mermaid my-class", // set additional css classes for parent container 
+    // },
     lang: "en-US",
     title: "VitePress Plugin Mermaid",
     description: "Mermaid support for vitepress",

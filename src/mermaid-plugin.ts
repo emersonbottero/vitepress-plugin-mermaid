@@ -9,6 +9,11 @@ interface MermaidPluginOptions extends MermaidConfig {
   externalDiagrams: ExternalDiagramDefinition[];
 }
 
+// Additional configuration for plugin itself. Separate model, not to risk name conflicts with future MermaidConfig options
+export interface MermaidPluginConfig {
+  class?: string;  
+}
+
 const DEFAULT_OPTIONS: MermaidConfig = {
   //We set loose as default here because is needed to load images
   securityLevel: "loose",
