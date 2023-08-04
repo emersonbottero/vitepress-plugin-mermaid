@@ -1,4 +1,4 @@
-export const MermaidMarkdown = (md) => {
+export const MermaidMarkdown = (md, pluginOptions) => {
   const sum = (o) => {
     function pad(hash, len) {
       while (hash.length < len) {
@@ -61,10 +61,11 @@ export const MermaidMarkdown = (md) => {
     if (token.info.trim() === "mermaid") {
       try {
         const key = index;
+        const cssClass = pluginOptions?.class || 'mermaid';
         return `
       <Suspense> 
       <template #default>
-      <Mermaid id="mermaid-${key}"  graph="${encodeURIComponent(
+      <Mermaid id="mermaid-${key}" class="${cssClass}" graph="${encodeURIComponent(
           token.content
         )}"></Mermaid>
       </template>

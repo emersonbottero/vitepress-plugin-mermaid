@@ -1,5 +1,5 @@
 <template>
-  <div v-html="svg" class="mermaid"></div>
+  <div v-html="svg" :class="props.class"></div>
 </template>
 
 <script setup>
@@ -27,6 +27,11 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  class:{
+    type: String,
+    required: false,
+    default: "mermaid",
+  }
 });
 
 const svg = ref(null);
