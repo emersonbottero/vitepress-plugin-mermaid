@@ -11,8 +11,13 @@ and a [complex example 😎](https://emersonbottero.github.io/vitepress-plugin-m
 
 ## Install
 
+npm
 ```bash
 npm i vitepress-plugin-mermaid mermaid -D
+```
+pnpm
+```bash
+pnpm install --shamefully-hoist 
 ```
 
 ## Setup it up
