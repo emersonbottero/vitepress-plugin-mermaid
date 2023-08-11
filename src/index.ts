@@ -39,9 +39,21 @@ export const withMermaid = (config: UserConfig) => {
   };
   if (!config.vite.resolve) config.vite.resolve = {};
   if (!config.vite.resolve.alias) config.vite.resolve.alias = {};
+  const inputAlias = config.vite.resolve.alias;
+  let objAlias = {};
+  if (inputAlias) {
+    // assume that inputAlias conform to vite standard
+    if (Array.isArray(inputAlias) && inputAlias.length !== 0) {
+      inputAlias.forEach(alia => {
+        objAlias[alia.find] = alia.replacement;
+      })
+    } else {
+      objAlias = { ...inputAlias };
+    }
+  }
 
   config.vite.resolve.alias = {
-    ...config.vite.resolve.alias,
+    ...objAlias,
     "dayjs/plugin/advancedFormat.js": "dayjs/esm/plugin/advancedFormat",
     "dayjs/plugin/customParseFormat.js": "dayjs/esm/plugin/customParseFormat",
     "dayjs/plugin/isoWeek.js": "dayjs/esm/plugin/isoWeek",
