@@ -3,9 +3,6 @@
 Add mermaid support for Vitepress.
 It detects any dark theme that are set in body as long as it has dark in the name
 
-> **Warning**
-> Not compatible with pnpm for now
-
 See the [docs 📕](https://emersonbottero.github.io/vitepress-plugin-mermaid/)  
 and a [complex example 😎](https://emersonbottero.github.io/vitepress-plugin-mermaid/guide/more-examples.html#render)
 
