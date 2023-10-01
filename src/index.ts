@@ -27,16 +27,16 @@ export const withMermaid = (config: UserConfig) => {
   if (!config.vite.plugins) config.vite.plugins = [];
   config.vite.plugins.push(MermaidPlugin(config.mermaid));
   if (!config.vite.optimizeDeps) config.vite.optimizeDeps = {};
-  config.vite.optimizeDeps = {
-    ...config.vite.optimizeDeps,
-    include: [
-      "@braintree/sanitize-url",
-      "dayjs",
-      "debug",
-      "cytoscape-cose-bilkent",
-      "cytoscape",
-    ],
-  };
+  if (!config.vite.optimizeDeps.include) config.vite.optimizeDeps.include = [];
+
+  config.vite.optimizeDeps.include = [
+    ...config.vite.optimizeDeps.include,
+    "@braintree/sanitize-url",
+    "dayjs",
+    "debug",
+    "cytoscape-cose-bilkent",
+    "cytoscape",
+  ];
   if (!config.vite.resolve) config.vite.resolve = {};
   if (!config.vite.resolve.alias) config.vite.resolve.alias = {};
   const inputAlias = config.vite.resolve.alias;
@@ -44,9 +44,9 @@ export const withMermaid = (config: UserConfig) => {
   if (inputAlias) {
     // assume that inputAlias conform to vite standard
     if (Array.isArray(inputAlias) && inputAlias.length !== 0) {
-      inputAlias.forEach(alia => {
+      inputAlias.forEach((alia) => {
         objAlias[alia.find] = alia.replacement;
-      })
+      });
     } else {
       objAlias = { ...inputAlias };
     }
