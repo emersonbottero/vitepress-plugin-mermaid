@@ -11,7 +11,7 @@ interface MermaidPluginOptions extends MermaidConfig {
 
 // Additional configuration for plugin itself. Separate model, not to risk name conflicts with future MermaidConfig options
 export interface MermaidPluginConfig {
-  class?: string;  
+  class?: string;
 }
 
 const DEFAULT_OPTIONS: MermaidConfig = {
@@ -42,10 +42,21 @@ export function MermaidPlugin(
         src =
           "\nimport Mermaid from 'vitepress-plugin-mermaid/Mermaid.vue';\n" +
           src;
-        src = src.replace(
-          "// install global components",
-          "// install global components\n\t\tapp.component('Mermaid', Mermaid);\n"
+
+        const lines = src.split("\n");
+
+        const targetLineIndex = lines.findIndex((line) =>
+          line.includes("app.component")
         );
+
+        lines.splice(
+          targetLineIndex,
+          0,
+          '  app.component("Mermaid", Mermaid);'
+        );
+
+        src = lines.join("\n");
+
         return {
           code: src,
           map: null, // provide source map if available
