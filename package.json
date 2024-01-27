@@ -22,6 +22,7 @@
   "module": "./dist/vitepress-plugin-mermaid.es.mjs",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/vitepress-plugin-mermaid.es.mjs",
       "require": "./dist/vitepress-plugin-mermaid.umd.js"
     },
