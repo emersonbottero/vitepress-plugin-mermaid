@@ -7,7 +7,7 @@ title: A more complex example
 
 💡 The theme for each page can be set in the frontmatter mermaidTheme parameter! But is only valid is light mode...
 
-```
+```yaml
 ---
 mermaidTheme: forest
 title: A more complex example
