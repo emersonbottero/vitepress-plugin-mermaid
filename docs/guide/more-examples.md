@@ -7,7 +7,7 @@ title: A more complex example
 
 💡 The theme for each page can be set in the frontmatter mermaidTheme parameter! But is only valid is light mode...
 
-```
+```yaml
 ---
 mermaidTheme: forest
 title: A more complex example
@@ -121,6 +121,18 @@ pie title Pets adopted by volunteers
   "Rats" : 15
 ```
 ## Gantt
+
+```mmd
+gantt
+    title A Gantt Diagram
+    dateFormat YYYY-MM-DD
+    section Section
+        A task          :a1, 2014-01-01, 30d
+        Another task    :after a1, 20d
+    section Another
+        Task in Another :2014-01-12, 12d
+        another task    :24d
+```
 
 ```mermaid
 gantt
