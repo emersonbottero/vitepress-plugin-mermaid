@@ -1,4 +1,4 @@
-import { type UserConfig } from "vitepress";
+import { type LocaleSpecificConfig, type UserConfig } from "vitepress";
 import { MermaidMarkdown } from "./mermaid-markdown";
 import { MermaidPlugin, MermaidPluginConfig } from "./mermaid-plugin";
 import { MermaidConfig } from "mermaid";
@@ -9,13 +9,13 @@ export { MermaidPlugin } from "./mermaid-plugin";
 export { UserConfig };
 
 declare module "vitepress" {
-  interface UserConfig {
+  interface UserConfig<ThemeConfig = any> extends LocaleSpecificConfig<ThemeConfig> {
     mermaid?: MermaidConfig;
     mermaidPlugin?: MermaidPluginConfig;
   }
 }
 
-export const withMermaid = (config: UserConfig) => {
+export const withMermaid = <ThemeConfig = any>(config: UserConfig<ThemeConfig>): UserConfig<ThemeConfig> => {
   if (!config.markdown) config.markdown = {};
   const markdownConfigOriginal = config.markdown.config || (() => {});
   config.markdown.config = (...args) => {
