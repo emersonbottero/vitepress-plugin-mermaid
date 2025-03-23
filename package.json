@@ -40,7 +40,7 @@
   "homepage": "https://github.com/emersonbottero/vitepress-plugin-mermaid#readme",
   "peerDependencies": {
     "mermaid": "10 || 11",
-    "vitepress": "^1.0.0 || ^1.0.0-alpha"
+    "vitepress": "^1.0.0 || ^1.0.0-alpha || ^2.0.0-alpha"
   },
   "optionalDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0"
