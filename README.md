@@ -28,7 +28,7 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 export default withMermaid({
   // your existing vitepress config...
   mermaid:{
-    //mermaidConfig !theme here works for ligth mode since dark theme is forced in dark mode
+    //mermaidConfig !theme here works for light mode since dark theme is forced in dark mode
   },
   ...
 });
